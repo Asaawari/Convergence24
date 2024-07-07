@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="footer.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Mate&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Playwrite+FR+Moderne:wght@100..400&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Margarine&display=swap" rel="stylesheet">
+		<title>Convergence Wanderlust - MHS for Girls</title>
+	</head>
+
+	<body>
+
+		<div id="intro">
+			<br>
+			<h1>INDIA</h1>
+			<h3>Discover the vibrant tapestry of India’s tourism, <br> where every corner offers a unique cultural mosaic waiting to be explored. <br>
+				From the Himalayan heights to the coastal retreats, <br> diversity thrives in every destination!</h3>
+			<br>
+		</div>
+
+		<hr>
+
+		<marquee>
+			<img src="/imgs/pic1.jpeg" id="marq">
+			<img src="/imgs/pic2.jpeg" id="marq">
+			<img src="/imgs/pic3.jpeg" id="marq">
+			<img src="/imgs/pic4.jpeg" id="marq">
+			<img src="/imgs/pic5.jpeg" id="marq">
+			<img src="/imgs/pic6.jpeg" id="marq">
+			<img src="/imgs/pic7.jpeg" id="marq">
+			<img src="/imgs/pic8.jpeg" id="marq">
+			<img src="/imgs/pic9.jpeg" id="marq">
+		</marquee>
+
+		<hr>
+
+		<div id="choose">
+			<div id="mapimg">
+				<img id="map" src="/maps/india.png" onclick="redirectToGoogleMaps()">
+				<span style="font-size: 25px;">Click map to see location</span>
+			</div>
+			<div id="choosing">
+				<h2>I'm Visiting!</h2>
+				<select id="states" onchange="getmap()">
+					<option value="andaman" onclick="getmap()">Andaman and Nicobar Islands</option>
+					<option value="andhra" onclick="getmap()">Andhra Pradesh</option>
+					<option value="arunachal" onclick="getmap()">Arunachal Pradesh</option>
+					<option value="assam" onclick="getmap()">Assam</option>
+					<option value="bihar" onclick="getmap()">Bihar</option>
+					<option value="chandigarh" onclick="getmap()">Chandigarh</option>
+					<option value="chhattisgarh" onclick="getmap()">Chhattisgarh</option>
+					<option value="delhi" onclick="getmap()">Delhi</option>
+					<option value="goa" onclick="getmap()">Goa</option>
+					<option value="gujarat" onclick="getmap()">Gujarat</option>
+					<option value="haryana" onclick="getmap()">Haryana</option>
+					<option value="himachal" onclick="getmap()">Himachal Pradesh</option>
+					<option value="jammu" onclick="getmap()">Jammu and Kashmir</option>
+					<option value="jharkhand" onclick="getmap()">Jharkhand</option>
+					<option value="karnataka" onclick="getmap()">Karnataka</option>
+					<option value="kerala" onclick="getmap()">Kerala</option>
+					<option value="ladakh" onclick="getmap()">Ladakh</option>
+					<option value="lakshwadeep" onclick="getmap()">Lakshwadeep</option>
+					<option value="madhya" onclick="getmap()">Madhya Pradesh</option>
+					<option value="maharashtra" onclick="getmap()">Maharashtra</option>
+					<option value="manipur" onclick="getmap()">Manipur</option>
+					<option value="meghalaya" onclick="getmap()">Meghalaya</option>
+					<option value="mizoram" onclick="getmap()">Mizoram</option>
+					<option value="nagaland" onclick="getmap()">Nagaland</option>
+					<option value="odisha" onclick="getmap()">Odisha</option>
+					<option value="puducherry" onclick="getmap()">Puducherry</option>
+					<option value="punjab" onclick="getmap()">Punjab</option>
+					<option value="rajasthan" onclick="getmap()">Rajasthan</option>
+					<option value="sikkim" onclick="getmap()">Sikkim</option>
+					<option value="tamil" onclick="getmap()">Tamil Nadu</option>
+					<option value="telangana" onclick="getmap()">Telangana</option>
+					<option value="tripura" onclick="getmap()">Tripura</option>
+					<option value="uttar" onclick="getmap()">Uttar Pradesh</option>
+					<option value="uttarakhand" onclick="getmap()">Uttarakhand</option>
+					<option value="bengal" onclick="getmap()">West Bengal</option>
+				</select>
+				<br>
+				<button onclick="getval()">Click to learn more!</button>
+			</div>
+		</div>
+
+		<style>
+			#mapimg:hover span {
+            	display: block;
+        	}
+			#mapimg span
+			{
+				display: none;
+			}
+			#choose {
+				display: flex;
+				align-items: center;
+				margin-top: 50px;
+			}
+
+			#mapimg {
+				margin-right: 20px;
+			}
+
+			#choosing {
+				display: flex;
+				flex-direction: column;
+			}
+
+			#choosing h2 {
+				margin-bottom: 10px;
+			}
+
+			#states {
+				margin-bottom: 10px;
+				padding: 5px;
+				font-size: 16px;
+			}
+
+			#map {
+				width: 300px;
+				height: auto;
+				cursor: pointer;
+			}
+		</style>
+
+		<script>
+			function getmap() {
+				const states = document.getElementById('states');
+				const map = document.getElementById('map');
+				const selectedState = states.value;
+
+				// Assuming your images are named as the value of the options
+				map.src = `/maps/${selectedState}.png`;
+			}
+
+			function getval() {
+				const states = document.getElementById('states');
+				const selectedState = states.value;
+				
+				// Redirect to a new HTML page based on the selected state
+				window.location.href = `/pages/${selectedState}.html`;
+			}
+
+			function redirectToGoogleMaps() {
+				const states = document.getElementById('states');
+				const selectedState = states.value;
+
+				// Open the Google Maps page for the selected state
+				window.open(`https://www.google.com/maps/place/${encodeURIComponent(selectedState)}`, '_blank');
+			}
+		</script>
+
+		<br>
+		<hr>
+
+		<div id="footer">
+			<br>
+			<div class="footertext">
+				<header style="font-size: 35px; font-family: 'Mate'">Modern High School for Girls</header>				
+			</div>
+			<div>
+                <iframe style="border: black; border-width: 2px; border-style: solid;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3685.1732014348972!2d88.362343114273!3d22.53518374002371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0276df38ffd3a9%3A0x1cb3b01f0fbb090f!2sModern%20High%20School%20for%20Girls!5e0!3m2!1sen!2sin!4v1575641403743!5m2!1sen!2sin" width="900" height="499" frameborder="0" style="border:0;" allowfullscreen="">
+                </iframe>
+            </div>
+			<p style="font-size: 20px;">Developed by Asaawari Sahai and Avantika Saraf</p>
+		</div>
+		
+	</body>
+
+</html>
