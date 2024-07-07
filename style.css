@@ -166,7 +166,7 @@ smalltext{
 }
 #intro
 {
-	background-image: url("/imgs/introbg.jpg");
+	background-image: url("https://asaawari.github.io/Convergence24/imgs/introbg.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size:contain;
